@@ -9,7 +9,7 @@
 <body>
 
   <form class="search-form">
-    <input type="text" class="search" placeholder="City or State">
+    <input type="text" class="search" placeholder="City or State" >
     <ul class="suggestions">
       <li>Filter for a city</li>
       <li>or a state</li>
@@ -17,7 +17,81 @@
   </form>
 <script>
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+  
+const inputTag = document.querySelector('.search');
+const suggestionsTag = document.querySelector('.suggestions');
 
+
+inputTag.addEventListener('input' , (e)=>{
+  
+  let wordTyped = e.target.value;
+  // get all city and state by word
+    reset();
+    showData(getCityState(wordTyped));
+  
+
+})
+
+
+// filter out the data 
+
+function getCityState(keyword){
+  
+  
+   var data = [];
+   data = [...result];
+   if(data.length>0 && keyword.trim()!=''){
+     var cityName= data.filter((i)=>{
+        var name = '';
+        name = i.city;
+        
+        return name.toLowerCase().includes(keyword.toLowerCase());
+        
+      })
+   }
+   return cityName;
+
+}
+
+// show data on page
+
+function showData(data) {
+  suggestionsTag.innerHTML=``;
+  if(data != undefined){
+  data.map((i)=>{
+    suggestionsTag.innerHTML+=`<li> ${i.city} </li>`
+  })
+}
+else{
+  reset();
+}
+}
+
+//  reset if input is blank
+
+function reset(){
+  // console.log('reset');
+  suggestionsTag.innerHTML = `
+  <li>Filter for a city</li>
+      <li>or a state</li>
+  `;
+}
+
+
+  // get data from url
+  async function fetchData(){
+  
+    const res = await fetch(endpoint);
+     result = await res.json();
+     
+    return result;
+    
+  }
+
+
+  var result;
+  fetchData();
+ 
 </script>
 </body>
 </html>
