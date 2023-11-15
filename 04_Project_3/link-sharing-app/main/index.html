@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>learning tailwind</title>
+
+    <link rel="stylesheet" href="./output.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <style>
+    @font-face {
+      font-family: "Instrument";
+      src: url(./assets/fonts/static/InstrumentSans-Bold.ttf);
+      font-weight: bold;
+    }
+
+    @font-face {
+      font-family: "Instrument";
+      src: url(./assets/fonts/static/InstrumentSans-Regular.ttf);
+      font-weight: regular;
+    }
+
+    @font-face {
+      font-family: "Instrument";
+      src: url(./assets/fonts/static/InstrumentSans-SemiBold.ttf);
+      font-weight: semiBold;
+    }
+
+    @font-face {
+      font-family: "Instrument";
+      src: url(./assets/fonts/InstrumentSans-Italic-VariableFont_wdth\wght.ttf);
+      font-weight: italic;
+    }
+
+    @font-face {
+      font-family: "Instrument";
+      src: url(./assets/fonts/InstrumentSans-VariableFont_wdth\wght.ttf);
+    }
+    * {
+      font-family: "Instrument ", sans-serif;
+    }
+  </style>
+  <body class="bg-slate-50">
+    <!-- nav bar -->
+    <nav class="w-full">
+      <div class="px-6 py-4 bg-white h-auto items-center flex justify-between">
+        <div class="">
+          <a href="#">
+            <img
+              class="md:hidden"
+              src="./assets/images/logo-devlinks-small.svg"
+              alt=""
+            />
+
+            <img
+              class="hidden md:block"
+              src="./assets/images/logo-devlinks-large.svg"
+              alt=""
+              srcset=""
+            />
+          </a>
+        </div>
+        <div class="">
+          <ul class="flex">
+            <li>
+              <button
+                class="px-6 py-3 flex font-bold bg-[#EFEBFE] rounded-md cursor-pointer"
+              >
+                <img
+                  class=""
+                  src="./assets/images/icon-links-header.svg"
+                  alt=""
+                />
+                <p class="hidden pl-2 md:block text-[#633CFF]">Links</p>
+              </button>
+            </li>
+            <li>
+              <button class="px-7 py-3 flex rounded-md cursor-pointer">
+                <img
+                  src="./assets/images/icon-profile-details-header.svg"
+                  class="w-6 h-6"
+                  alt=""
+                />
+                <p class="hidden md:block ps-2 font-bold text-[#737373]">
+                  Profile Details
+                </p>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="">
+         <a href="./preview.html
+         ">
+         <button
+         class="py-3 px-6 rounded-md cursor-pointer border-2 border-solid border-[#633CFF]"
+       >
+       
+         <img
+           src="./assets/images/icon-preview-header.svg"
+           alt=""
+           srcset=""
+           class="w-6 h-6 md:hidden"
+         />
+         <p class="text-[#633CFF] font-semibold hidden md:block">Preview</p>
+       </button>
+        </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- hero section -->
+
+    <div class="m-6 flex justify-around">
+      <div class="left hidden lg:block">
+        <div class="p-6 flex items-center justify-center pt-20">
+          <img src="./assets/images/illustration-phone-mockup.svg" alt="" />
+        </div>
+      </div>
+      <div class="right m-6 md:w-[728px]">
+        <!-- heding top -->
+        <div class="">
+          <h3 class="font-bold text-2xl text-[#333]">Customize your links</h3>
+          <p class="m-2 text-lg text-[#737373]">
+            Add/edit/remove links below and then share all your profiles with
+            the world!
+          </p>
+        </div>
+        <!-- button add new link -->
+        <div
+          class="mt-10 border-solid border-2 rounded-md border-[#633CFF] px-7 py-3 text-center cursor-pointer" id="addBtn"
+        >
+          <p class="font-semibold text-[#633CFF]">+ Add new link</p>
+        </div>
+
+        <!-- lets get you started section -->
+        <div class="w-full flex justify-center flex-col min-h-max " id="startMain">
+          <div class="m-5 bg-[#FAFAFA] flex flex-col items-center" id="startedSection">
+            <div class="mt-24">
+              <img
+                src="./assets/images/illustration-empty.svg"
+                alt=""
+                class=""
+              />
+            </div>
+            <div class="text-center">
+              <h2 class="font-bold text-2xl md:text-3xl text-[#333]">
+                Let’s get you started
+              </h2>
+              <p class="pt-6 md:w-[488px] text-center text-[#737373]">
+                Use the “Add new link” button to get started. Once you have more
+                than one link, you can reorder and edit them. We’re here to help
+                you share your profiles with everyone!
+              </p>
+            </div>
+
+            
+          </div>
+        </div>
+
+        <!-- bottom section -->
+        <div class="w-full mt-10 mb-6">
+          <div class="border border-solid rounded-sm"></div>
+          <div class="flex justify-end pr-10 py-6">
+            <button class="px-7 py-3 text-white bg-[#633CFF] rounded-md " id="save" >
+              Save
+            </button>
+            <!-- <input type="text" oninput=`${e=>{test(e)}}`> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
