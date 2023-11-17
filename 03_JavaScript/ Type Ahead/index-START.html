@@ -27,9 +27,17 @@ inputTag.addEventListener('input' , (e)=>{
   let wordTyped = e.target.value;
   // get all city and state by word
     reset();
-    showData(getCityState(wordTyped));
+   let data =  getCityState(wordTyped)
+   suggestionsTag.innerHTML=``;
+  if(data != undefined){
+  data.map((i)=>{
+    suggestionsTag.innerHTML+=`<li> ${i.city} </li>`
+  })
+}
+else{
+  reset();
+}
 })
-
 
 // filter out the data 
 function getCityState(keyword){
@@ -41,22 +49,7 @@ function getCityState(keyword){
    }
    return cityName;
 }
-
-// show data on page
-function showData(data) {
-  suggestionsTag.innerHTML=``;
-  if(data != undefined){
-  data.map((i)=>{
-    suggestionsTag.innerHTML+=`<li> ${i.city} </li>`
-  })
-}
-else{
-  reset();
-}
-}
-
 //  reset if input is blank
-
 function reset(){
   // console.log('reset');
   suggestionsTag.innerHTML = `
@@ -69,7 +62,9 @@ function reset(){
     try{
     const res = await fetch(endpoint);
      result = await res.json();
-    }catch()
+    }catch(err){
+      alert("Error"+err);
+    }
     return result;
   }
 </script>
