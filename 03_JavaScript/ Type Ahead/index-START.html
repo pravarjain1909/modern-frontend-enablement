@@ -16,45 +16,33 @@
     </ul>
   </form>
 <script>
+  "use strict";
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
-  
 const inputTag = document.querySelector('.search');
 const suggestionsTag = document.querySelector('.suggestions');
-
+var result;
+fetchData();
 
 inputTag.addEventListener('input' , (e)=>{
-  
   let wordTyped = e.target.value;
   // get all city and state by word
     reset();
     showData(getCityState(wordTyped));
-  
-
 })
 
 
 // filter out the data 
-
 function getCityState(keyword){
-  
-  
-   var data = [];
-   data = [...result];
+  var data = [...result];
    if(data.length>0 && keyword.trim()!=''){
      var cityName= data.filter((i)=>{
-        var name = '';
-        name = i.city;
-        
-        return name.toLowerCase().includes(keyword.toLowerCase());
-        
+        return i.city.toLowerCase().includes(keyword.toLowerCase());
       })
    }
    return cityName;
-
 }
 
 // show data on page
-
 function showData(data) {
   suggestionsTag.innerHTML=``;
   if(data != undefined){
@@ -76,22 +64,14 @@ function reset(){
       <li>or a state</li>
   `;
 }
-
-
   // get data from url
   async function fetchData(){
-  
+    try{
     const res = await fetch(endpoint);
      result = await res.json();
-     
+    }catch()
     return result;
-    
   }
-
-
-  var result;
-  fetchData();
- 
 </script>
 </body>
 </html>
